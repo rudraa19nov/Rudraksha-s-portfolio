@@ -142,7 +142,7 @@ export default function Hero() {
         /* NO textAlign: center */
       }}>
         {/* Badge */}
-        <div className="fade-up" style={{
+        {/* <div className="fade-up" style={{
           display: 'inline-flex', alignItems: 'center', gap: 7,
           background: 'rgba(184,204,110,0.1)', border: '1px solid rgba(184,204,110,0.22)',
           padding: '5px 14px', borderRadius: 50, fontSize: 11,
@@ -150,8 +150,8 @@ export default function Hero() {
           letterSpacing: '0.06em', textTransform: 'uppercase',
         }}>
           <span className="pulse-dot" style={{ width: 5, height: 5, background: 'var(--color-accent)', borderRadius: '50%' }} />
-          Available for Internships · India 2025
-        </div>
+          Available for Internships · India 2026
+        </div> */}
 
         {/* Title — left aligned */}
         <h1 className="fade-up delay-1" style={{
@@ -206,7 +206,7 @@ export default function Hero() {
           }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-accent)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border2)'; e.currentTarget.style.color = 'var(--color-fg)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-          >↓ Download Resume</button>
+          >↓ Resume</button>
 
           <button onClick={() => handleNav('contact')} style={{
             display: 'inline-flex', alignItems: 'center', gap: 7,

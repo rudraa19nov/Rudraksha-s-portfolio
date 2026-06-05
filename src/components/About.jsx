@@ -1,146 +1,51 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { personal, traits } from '../data';
-import { useProfile } from '../context/ProfileContext';
 
-function ProfileUpload() {
-  const { profilePic, uploadPic, removePic } = useProfile();
-  const inputRef = useRef(null);
-  const [drag, setDrag] = useState(false);
-  const [err, setErr] = useState('');
-  const [hovering, setHovering] = useState(false);
+// ── Set your profile photo here ──────────────────────────────────────────────
+// Replace this path/URL with your actual photo.
+// Options:
+//   • Local asset:  import profilePhoto from '../assets/profile.jpg';  then use profilePhoto below
+//   • Public path:  '/images/profile.jpg'
+//   • External URL: 'https://example.com/your-photo.jpg'
+const PROFILE_PHOTO = '/profile.jpeg';  
+// ─────────────────────────────────────────────────────────────────────────────
 
-  const handle = async (file) => {
-    setErr('');
-    try { await uploadPic(file); } catch (e) { setErr(e.message); }
-  };
-
+function ProfilePic() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-      <p style={{
+      {/* <p style={{
         fontSize: 11, fontWeight: 700, letterSpacing: '0.08em',
         textTransform: 'uppercase', color: 'var(--color-fg3)',
         marginBottom: 12, textAlign: 'center',
-      }}>Profile Photo</p>
+      }}>
+        Profile Photo
+      </p> */}
 
-      {/* ── PHOTO BOX ── */}
-      {/* When photo present: 95% photo, 5% strip at bottom for change button */}
-      {/* When no photo: centered initials + upload prompt */}
       <div
         style={{
           position: 'relative',
           width: '100%',
-          aspectRatio: '1 / 1',       /* square box */
+          aspectRatio: '1 / 1',
           borderRadius: 16,
           overflow: 'hidden',
-          border: profilePic
-            ? '2px solid var(--color-border2)'
-            : `2px dashed ${drag ? 'var(--color-accent)' : 'var(--color-border2)'}`,
-          background: profilePic ? 'transparent' : 'var(--color-card)',
-          cursor: 'pointer',
-          transition: 'border-color 0.2s',
+          border: '2px solid var(--color-border2)',
+          background: 'var(--color-card)',
         }}
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
-        onDragOver={e => { e.preventDefault(); setDrag(true); }}
-        onDragLeave={() => setDrag(false)}
-        onDrop={e => { e.preventDefault(); setDrag(false); if (e.dataTransfer.files[0]) handle(e.dataTransfer.files[0]); }}
-        onClick={() => inputRef.current?.click()}
       >
-        {profilePic ? (
-          <>
-            {/* ── 95% — the actual photo ── */}
-            <img
-              src={profilePic}
-              alt="Profile"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center top',
-                display: 'block',
-              }}
-            />
-
-            {/* ── Bottom 5% strip — always visible when photo is present ── */}
-            <div style={{
-              position: 'absolute',
-              bottom: 0, left: 0, right: 0,
-              height: '14%',           /* ~5% visual strip */
-              background: 'rgba(0,0,0,0.7)',
-              backdropFilter: 'blur(4px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 12,
-              zIndex: 2,
-              transition: 'background 0.2s',
-            }}>
-              <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)', fontWeight: 600, letterSpacing: '0.05em' }}>
-                📷 Change photo
-              </span>
-            </div>
-
-            {/* Dark overlay on hover for extra affordance */}
-            {hovering && (
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'rgba(0,0,0,0.15)',
-                zIndex: 1, pointerEvents: 'none',
-              }} />
-            )}
-          </>
-        ) : (
-          /* ── NO PHOTO: initials + upload hint ── */
-          <div style={{
-            width: '100%', height: '100%',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center',
-            gap: 10, padding: 20,
-            background: drag ? 'rgba(184,204,110,0.06)' : 'transparent',
-            transition: 'background 0.2s',
-          }}>
-            {/* Big initials */}
-            <div style={{
-              fontFamily: 'Syne, sans-serif', fontSize: 'clamp(36px,8vw,52px)',
-              fontWeight: 800, color: 'var(--color-accent)',
-              lineHeight: 1, userSelect: 'none',
-            }}>
-              RSC
-            </div>
-            {/* Upload icon + text */}
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 20, marginBottom: 6 }}>📤</div>
-              <p style={{ fontSize: 12, color: 'var(--color-fg3)', lineHeight: 1.5 }}>
-                Click or drag & drop<br />
-                <span style={{ fontSize: 11 }}>JPG, PNG, WebP · Max 5MB</span>
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Remove button — only when photo present, outside box */}
-      {profilePic && (
-        <button
-          onClick={e => { e.stopPropagation(); removePic(); }}
+        <img
+          src={PROFILE_PHOTO}
+          alt="Profile"
           style={{
-            marginTop: 8, fontSize: 11, color: 'var(--color-rose)',
-            background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: 'DM Sans, sans-serif', textAlign: 'center',
-            padding: '4px 0', transition: 'opacity 0.2s',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+            display: 'block',
           }}
-          onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
-          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-        >
-          ✕ Remove photo
-        </button>
-      )}
-
-      {err && <p style={{ fontSize: 11, color: 'var(--color-rose)', marginTop: 6, textAlign: 'center' }}>{err}</p>}
-      <input ref={inputRef} type="file" accept="image/*" style={{ display: 'none' }}
-        onChange={e => { if (e.target.files[0]) handle(e.target.files[0]); }} />
+        />
+      </div>
     </div>
   );
 }
@@ -167,7 +72,7 @@ export default function About() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: 48, alignItems: 'start',
         }}>
-          {/* Left — bio + trait cards */}
+          {/* Left – bio + trait cards */}
           <div>
             {personal.bio.map((p, i) => (
               <p key={i} style={{
@@ -186,14 +91,12 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — profile pic card + info card */}
+          {/* Right – profile pic card + info card */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* Profile pic card */}
             <div className="glass-card" style={{ borderRadius: 20, padding: 20 }}>
-              <ProfileUpload />
+              <ProfilePic />
             </div>
 
-            {/* Info card */}
             <div className="glass-card" style={{ borderRadius: 20, padding: 20 }}>
               {INFO.map((item, i) => (
                 <div key={i} style={{
