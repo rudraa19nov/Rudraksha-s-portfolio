@@ -107,17 +107,6 @@ Fully responsive — tested at 320px to 1440px+:
 
 ---
 
-## 📄 Resume Download
-
-To enable the resume download button:
-1. Place your PDF at `public/resume.pdf`
-2. In `src/components/Hero.jsx`, find `handleDownload` and replace the `alert()` with:
-```js
-window.open('/resume.pdf', '_blank');
-```
-
----
-
 ## 🌐 Deployment
 
 ### Vercel (Recommended)
@@ -139,17 +128,3 @@ npm install --save-dev gh-pages
 # Add scripts: "predeploy": "npm run build", "deploy": "gh-pages -d build"
 npm run deploy
 ```
-
----
-
-## 🔗 Links to Update in data.js
-
-```js
-linkedin: 'https://linkedin.com/in/YOUR_USERNAME',
-github:   'https://github.com/YOUR_USERNAME',
-leetcode: 'https://leetcode.com/YOUR_USERNAME',
-```
-
----
-
-Built with ❤️ for Rudraksha Singh Chauhan
