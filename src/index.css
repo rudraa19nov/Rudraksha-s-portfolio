@@ -1,0 +1,565 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────
+   DARK THEME  (default — applied to :root, html, body)
+───────────────────────────────────────────────────────── */
+:root,
+html,
+body {
+  --color-bg:      #0C0E0B;
+  --color-bg2:     #111310;
+  --color-bg3:     #161914;
+  --color-fg:      #E8E6DF;
+  --color-fg2:     #9A9890;
+  --color-fg3:     #5A5850;
+  --color-accent:  #B8CC6E;
+  --color-accent2: #8FAA3A;
+  --color-warm:    #E8A44A;
+  --color-warm2:   #C47A1E;
+  --color-rose:    #D4756A;
+  --color-blue:    #6AB0CC;
+  --color-border:  rgba(184, 204, 110, 0.10);
+  --color-border2: rgba(184, 204, 110, 0.22);
+  --color-card:    rgba(255, 255, 255, 0.04);
+  --color-card2:   rgba(255, 255, 255, 0.08);
+}
+
+/* ─────────────────────────────────────────────────────────
+   LIGHT THEME — overrides all vars when .light is present
+   Applied to html.light  AND  body.light
+───────────────────────────────────────────────────────── */
+html.light,
+body.light,
+.light {
+  --color-bg:      #F5F2E9;
+  --color-bg2:     #FDFCF8;
+  --color-bg3:     #EDEAE0;
+  --color-fg:      #1C1A14;
+  --color-fg2:     #5A5648;
+  --color-fg3:     #9A9688;
+  --color-accent:  #5A7A18;
+  --color-accent2: #3E5A08;
+  --color-warm:    #B86010;
+  --color-warm2:   #8A4008;
+  --color-rose:    #C04848;
+  --color-blue:    #2A80A8;
+  --color-border:  rgba(80, 100, 20, 0.14);
+  --color-border2: rgba(80, 100, 20, 0.28);
+  --color-card:    rgba(0, 0, 0, 0.05);
+  --color-card2:   rgba(0, 0, 0, 0.09);
+}
+
+/* ─────────────────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: background-color 0.35s ease, color 0.35s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Every section/div picks up the transition too */
+section, div, header, footer, nav, aside, main {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg2); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 99px; }
+
+/* ─────────────────────────────────────────────────────────
+   SELECTION
+───────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(184, 204, 110, 0.25);
+  color: var(--color-fg);
+}
+
+/* ─────────────────────────────────────────────────────────
+   CUSTOM CURSOR (desktop only)
+───────────────────────────────────────────────────────── */
+@media (pointer: fine) {
+  .custom-cursor {
+    position: fixed;
+    width: 9px; height: 9px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease;
+    mix-blend-mode: exclusion;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 22px; height: 22px;
+    border: 1px solid rgba(184, 204, 110, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: conic-gradient(
+    #6366f1,
+    #baacc8,
+    #06b6d4,
+    #8a8be8
+  );
+  animation: spin 4s linear infinite;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+───────────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-warm));
+  z-index: 1001;
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+/* ─────────────────────────────────────────────────────────
+   GLASS CARD
+───────────────────────────────────────────────────────── */
+.glass-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+/* ─────────────────────────────────────────────────────────
+   GRADIENT TEXT
+───────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #B8CC6E 20%, #E8A44A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-name {
+  background: linear-gradient(135deg, var(--color-fg) 40%, var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION LABEL
+───────────────────────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+.section-label::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: var(--color-accent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION TITLE
+───────────────────────────────────────────────────────── */
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--color-fg);
+}
+.section-title span { color: var(--color-accent); }
+
+/* ─────────────────────────────────────────────────────────
+   HERO PARTICLE CANVAS
+───────────────────────────────────────────────────────── */
+#hero-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BACK TO TOP BUTTON
+───────────────────────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  z-index: 600;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111310;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  /* transition handles both opacity AND transform */
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.back-to-top:hover {
+  background: var(--color-accent2);
+  box-shadow: 0 8px 28px rgba(184, 204, 110, 0.35);
+}
+/* Hidden state */
+.back-to-top.btt-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(0.9);
+}
+/* Visible state */
+.back-to-top.btt-visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+.back-to-top.btt-visible:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FORM INPUTS
+───────────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 13px;
+  color: var(--color-fg);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+.form-input::placeholder { color: var(--color-fg3); }
+.form-input:focus {
+  border-color: rgba(184, 204, 110, 0.45);
+  background: var(--color-card2);
+  box-shadow: 0 0 0 3px rgba(184, 204, 110, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────
+   TERMINAL
+───────────────────────────────────────────────────────── */
+.terminal-wrap {
+  border: 1px solid rgba(184, 204, 110, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0D0F0B;
+}
+/* Light mode: slightly lighter but still terminal-dark */
+html.light .terminal-wrap,
+body.light .terminal-wrap {
+  background: #1C1E1A;
+}
+
+.term-body {
+  padding: 18px 20px;
+  min-height: 260px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+}
+@media (max-width: 640px) {
+  .term-body { font-size: 12px; padding: 14px; min-height: 200px; max-height: 300px; }
+}
+.term-body::-webkit-scrollbar { width: 3px; }
+.term-body::-webkit-scrollbar-thumb { background: rgba(184, 204, 110, 0.25); border-radius: 3px; }
+
+/* ─────────────────────────────────────────────────────────
+   BROWSER MOCKUP
+───────────────────────────────────────────────────────── */
+.browser-bar {
+  background: rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+html.light .browser-bar,
+body.light .browser-bar {
+  background: rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.browser-url {
+  background: rgba(255, 255, 255, 0.07);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.32);
+  border-radius: 4px;
+  padding: 3px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin: 0 8px;
+  transition: background 0.3s, color 0.3s;
+}
+html.light .browser-url,
+body.light .browser-url {
+  background: rgba(0, 0, 0, 0.09);
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE MENU
+───────────────────────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  top: 72px; left: 12px; right: 12px;
+  z-index: 499;
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(12, 14, 11, 0.96);
+  border: 1px solid var(--color-border2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+html.light .mobile-menu,
+body.light .mobile-menu {
+  background: rgba(245, 242, 233, 0.97);
+}
+
+/* ─────────────────────────────────────────────────────────
+   PROJECT PREVIEW GRADIENTS
+───────────────────────────────────────────────────────── */
+.preview-krishi { background: linear-gradient(135deg, rgba(100,130,40,0.22), rgba(60,90,20,0.12)); }
+.preview-wander  { background: linear-gradient(135deg, rgba(196,122,30,0.18), rgba(130,80,20,0.10)); }
+.preview-ai      { background: linear-gradient(135deg, rgba(106,176,204,0.15), rgba(60,130,170,0.10)); }
+.preview-alumni  { background: linear-gradient(135deg, rgba(140,90,180,0.15), rgba(100,60,140,0.10)); }
+
+/* ─────────────────────────────────────────────────────────
+   TIMELINE LINE
+───────────────────────────────────────────────────────── */
+.timeline-line::before {
+  content: '';
+  position: absolute; left: 0; top: 6px; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-warm), transparent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   HOVER LIFT UTILITY
+───────────────────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.hover-lift:hover { transform: translateY(-4px); }
+
+/* ─────────────────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeInUp 0.65s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.blink { animation: blink 0.8s step-end infinite; }
+
+@keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@keyframes float1 { 0%,100% { transform:translate(0,0); } 50% { transform:translate(-18px,16px); } }
+@keyframes float2 { 0%,100% { transform:translate(0,0); } 50% { transform:translate(14px,-14px); } }
+.orb1 { animation: float1 8s ease-in-out infinite; }
+.orb2 { animation: float2 10s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE HELPERS
+───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .show-mobile-only { display: none !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════════════════ */
+
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  html, body, * { cursor: none !important; }
+}
+
+/* ── DOT ── */
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.2s, border-radius 0.2s;
+  will-change: left, top;
+}
+
+/* Hover state: small crosshair shape */
+.cursor-dot--hover {
+  width: 4px;
+  height: 4px;
+  background: var(--color-warm);
+  box-shadow: 0 0 8px var(--color-warm);
+}
+
+/* Click ripple */
+.cursor-dot--click {
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── TRAILING RING ── */
+.cursor-ring-custom {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, opacity 0.2s;
+}
+
+/* The ring border itself */
+.cursor-ring-custom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(184, 204, 110, 0.5);
+  border-radius: 50%;
+  transition: border-color 0.25s, border-radius 0.3s, transform 0.3s;
+}
+
+/* Inner crosshair lines */
+.cursor-ring-h,
+.cursor-ring-v {
+  position: absolute;
+  background: rgba(184, 204, 110, 0.3);
+  border-radius: 1px;
+  transition: background 0.25s, opacity 0.2s;
+}
+.cursor-ring-h {
+  top: 50%; left: 0; right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.cursor-ring-v {
+  left: 50%; top: 0; bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+/* ── HOVER state: ring morphs to rounded-rect, warms up ── */
+.cursor-ring--hover {
+  width: 48px;
+  height: 48px;
+}
+.cursor-ring--hover::before {
+  border-color: rgba(232, 164, 74, 0.7);
+  border-radius: 12px;
+  transform: rotate(45deg);
+  border-width: 1.5px;
+}
+.cursor-ring--hover .cursor-ring-h,
+.cursor-ring--hover .cursor-ring-v {
+  background: rgba(232, 164, 74, 0.35);
+}
+
+/* ── CURSOR LABEL (for data-cursor elements) ── */
+.cursor-label {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99997;
+  transform: translate(14px, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: rgba(12, 14, 11, 0.85);
+  border: 1px solid var(--color-border2);
+  border-radius: 6px;
+  padding: 3px 8px;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+/* Light mode adjustments */
+html.light .cursor-ring-custom::before {
+  border-color: rgba(90, 122, 24, 0.5);
+}
+html.light .cursor-ring-h,
+html.light .cursor-ring-v {
+  background: rgba(90, 122, 24, 0.3);
+}
+html.light .cursor-ring--hover::before {
+  border-color: rgba(184, 96, 16, 0.65);
+}
+html.light .cursor-dot {
+  background: var(--color-accent);
+}
+html.light .cursor-label {
+  background: rgba(245, 242, 233, 0.92);
+  color: var(--color-accent);
+}
