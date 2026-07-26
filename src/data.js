@@ -12,21 +12,21 @@ export const personal = {
   brand: 'Building scalable web applications and solving real-world problems through clean code, modern technologies, and continuous learning.',
   bio: [
     'Motivated <strong>MERN Stack Developer</strong> with hands-on experience in full-stack web development and backend systems. Skilled in React, Node.js, Express.js, MongoDB, Java, and DSA.',
-    'Pursuing B.Tech at <strong>BIET Jhansi</strong> with an 8.5 CGPA. As <strong>SIH 2025 Winner</strong>, I built KrishiSakhi — an AI-powered farming assistant for rural farmers.',
+    'Pursuing B.Tech at <strong>BIET Jhansi</strong> with an 8.4 CGPA. As <strong>SIH 2025 Winner</strong>, I built KrishiSakhi — an AI-powered farming assistant for rural farmers.',
     'Passionate about building impactful applications and continuously learning modern technologies. Actively seeking internship opportunities.',
   ],
 };
 
 export const stats = [
-  { id: 's1', value: 250,  suffix: '+',  label: 'DSA Problems Solved' },
+  { id: 's1', value: 500,  suffix: '+',  label: 'DSA Problems Solved' },
   { id: 's2', value: 10,    suffix: '+',  label: 'Full Stack Projects' },
   { id: 's3', value: null, emoji: '🏆',  label: 'SIH 2025 Winner' },
-  { id: 's4', value: 8.5,  suffix: '',   label: 'CGPA · B.Tech IT', isFloat: true },
+  { id: 's4', value: 8.4,  suffix: '',   label: 'CGPA · B.Tech IT', isFloat: true },
 ];
 
 export const traits = [
   { icon: '🌾', title: 'AgriTech Impact',    desc: 'SIH 2025 national award for AI farming platform' },
-  { icon: '🧩', title: 'Problem Solver',      desc: '250+ DSA problems on LeetCode' },
+  { icon: '🧩', title: 'Problem Solver',      desc: '500+ DSA problems on LeetCode' },
   { icon: '🚀', title: 'Full Stack Dev',      desc: 'End-to-end MERN applications' },
   { icon: '🤖', title: 'AI Integration',      desc: 'Gemini AI & voice APIs in production' },
   { icon: '🤝', title: 'Team Player',         desc: 'National hackathon team leader' },
@@ -42,7 +42,12 @@ export const techStack = [
   {
     category: 'Frontend',
     dot: 'blue',
-    items: ['React.js', 'Redux', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'EJS'],
+    items: ['React.js', 'Next.js', 'Redux', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'EJS'],
+  },
+  {
+    category: 'AI & ML',
+    dot: 'rose',
+    items: ['Gemini AI', 'Mistral AI', 'Transformers', 'ElevenLabs'],
   },
   {
     category: 'Backend & Auth',
@@ -78,6 +83,25 @@ export const projects = [
     github: 'https://github.com/rudraa19nov/KrishiSakhi',
     live: 'https://hilarious-haupia-22b309.netlify.app/login',
     tags: ['all', 'national', 'fullstack', 'ai'],
+  },
+
+  //-----studymate----//
+
+  {
+    id: 'studymate',
+    title: 'StudyMate',
+    url: 'study-mate-nine-flame.vercel.app',
+    type: 'AI + Full Stack',
+    badge: 'featured',
+    period: 'Jun 2026 – Jul 2026',
+    preview: 'studymate',
+    previewEmoji: '📚',
+    desc: 'AI-powered study assistant that lets users upload PDFs and get source-grounded answers. Built a PDF ingestion pipeline with semantic embeddings for retrieval-augmented generation (RAG), backed by the Mistral LLM for context-aware Q&A, on a Next.js 16.2 (App Router, Turbopack) frontend.',
+    tech: ['Next.js 16.2', 'React 19', 'Express.js', 'Transformers', 'Mistral AI', 'Tailwind CSS'],
+    features: ['PDF Ingestion', 'Semantic Embeddings (RAG)', 'Mistral LLM Q&A', 'File Uploads', 'Turbopack App Router', 'Responsive UI'],
+    github: 'https://github.com/rudraa19nov/StudyMate',
+    live: 'https://study-mate-nine-flame.vercel.app/',
+    tags: ['all', 'ai', 'fullstack'],
   },
 
   // ── 2. StayScape (formerly Wanderlust) ───────────────────────────
@@ -136,6 +160,14 @@ export const projects = [
 ];
 
 export const experience = [
+   {
+    period: 'Jun 2026 – Jul 2026',
+    title: 'Full Stack Developer — StudyMate',
+    org: 'Personal Project',
+    desc: 'Built an AI-powered PDF study assistant on Next.js 16.2, with a semantic-embedding ingestion pipeline and Mistral LLM-backed retrieval-augmented Q&A over uploaded documents.',
+    highlight: false,
+  },
+  
   {
     period: 'Apr 2026 – May 2026',
     title: 'Full Stack Developer — NexLearn',
@@ -168,7 +200,7 @@ export const experience = [
     period: 'Aug 2023 – Jun 2027',
     title: 'B.Tech Student — Information Technology',
     org: 'BIET Jhansi',
-    desc: 'Developing expertise in full-stack development, DSA, and software engineering fundamentals while maintaining a CGPA of 8.5.',
+    desc: 'Developing expertise in full-stack development, DSA, and software engineering fundamentals while maintaining a CGPA of 8.4.',
     highlight: false,
   },
 ];
@@ -179,7 +211,7 @@ export const education = {
   degree: 'B.Tech in Information Technology',
   period: 'Aug 2023 – Jun 2027',
   location: 'Jhansi, Uttar Pradesh',
-  cgpa: '8.5',
+  cgpa: '8.4',
   coursework: [
     'Data Structures & Algorithms', 'Object Oriented Programming',
     'Database Management Systems', 'Operating Systems',
@@ -191,8 +223,8 @@ export const codingProfiles = [
   {
     name: 'LeetCode',
     emoji: '🧩',
-    stat: '250+ Problems Solved',
-    statBold: '250+',
+    stat: '500+ Problems Solved',
+    statBold: '500+',
     url: 'https://leetcode.com/u/rudraa19nov/',
     bg: 'rgba(255,161,22,0.12)',
   },
@@ -226,7 +258,7 @@ export const terminalCommands = {
   "institution": "BIET Jhansi",
   "degree": "B.Tech Information Technology",
   "period": "Aug 2023 – Jun 2027",
-  "cgpa": 8.5
+  "cgpa": 8.4
 }`,
   contact: `{
   "email": "rudrakshasingh6@gmail.com",
@@ -236,19 +268,20 @@ export const terminalCommands = {
 }`,
   achievements: `[
   "🏆 SIH 2025 National Hackathon Winner — KrishiSakhi",
-  "250+ LeetCode algorithmic challenges solved",
+  "500+ LeetCode algorithmic challenges solved",
   "10+ production-grade full-stack applications built",
-  "CGPA: 8.5 at BIET Jhansi"
+  "CGPA: 8.4 at BIET Jhansi"
 ]`,
   skills: `{
   "languages":  ["Java", "JavaScript", "TypeScript", "Python", "SQL", "C"],
-  "frontend":   ["React.js", "Redux", "Tailwind CSS", "Bootstrap", "EJS"],
+  "frontend":   ["React.js", "Next.js", "Redux", "Tailwind CSS", "Bootstrap", "EJS"],
   "backend":    ["Node.js", "Express.js", "JWT", "Passport.js", "OAuth 2.0"],
   "databases":  ["MongoDB", "MySQL", "Firebase", "Redis"],
   "tools":      ["Git", "Docker", "Render", "Postman", "Cloudinary"]
 }`,
   projects: `[
   { "name": "KrishiSakhi",  "stack": "Express + MongoDB + Gemini AI", "award": "SIH 2025 🏆" },
+  { "name": "StudyMate",    "stack": "Next.js 16.2 + Express + Mistral AI (RAG)" },
   { "name": "StayScape",    "stack": "Node + Express + MongoDB + EJS" },
   { "name": "NexLearn",     "stack": "React + Node + MongoDB + Gemini AI" },
   { "name": "ConnectAlum",  "stack": "React + Node + MongoDB + JWT" }

@@ -88,9 +88,9 @@ function ParticleCanvas() {
 
 const HERO_STATS = [
   { val: '🏆 SIH 2025', label: 'National Winner' },
-  { val: '250+', label: 'DSA Problems' },
+  { val: '500+', label: 'DSA Problems' },
   { val: '10+', label: 'Full Stack Projects' },
-  { val: '8.5', label: 'CGPA' },
+  { val: '8.4', label: 'CGPA' },
 ];
 
 export default function Hero() {

@@ -11,6 +11,7 @@ const FILTERS = [
 
 const PREVIEW_STYLES = {
   krishi: { background: 'linear-gradient(135deg,rgba(100,130,40,0.22),rgba(60,90,20,0.12))' },
+  studymate: { background: 'linear-gradient(135deg,rgba(90,140,220,0.18),rgba(60,90,180,0.10))' },
   wander: { background: 'linear-gradient(135deg,rgba(196,122,30,0.18),rgba(130,80,20,0.10))' },
   ai:     { background: 'linear-gradient(135deg,rgba(106,176,204,0.15),rgba(60,130,170,0.10))' },
   alumni: { background: 'linear-gradient(135deg,rgba(140,90,180,0.15),rgba(100,60,140,0.10))' },
@@ -75,11 +76,26 @@ function ProjectCard({ p }) {
             <span style={{ ...BADGE_STYLES[p.badge === 'national' ? 'featured' : (p.badge || 'default')], fontSize: 10, fontWeight: 600, padding: '3px 9px', borderRadius: 50 }}>{p.type}</span>
           </div>
           <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
-            <a href={p.github} target="_blank" rel="noreferrer"
+            <a href={p.live} target="_blank" rel="noreferrer"
               style={{ width: 27, height: 27, border: '1px solid var(--color-border)', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-fg3)', fontSize: 13, textDecoration: 'none', transition: 'all 0.2s' }}
               onMouseEnter={e => { e.target.style.borderColor = 'var(--color-accent)'; e.target.style.color = 'var(--color-accent)'; }}
               onMouseLeave={e => { e.target.style.borderColor = 'var(--color-border)'; e.target.style.color = 'var(--color-fg3)'; }}
             >↗</a>
+            <a href={p.github} target="_blank" rel="noreferrer"
+  style={{ width: 27, height: 27, border: '1px solid var(--color-border)', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-fg3)', fontSize: 13, textDecoration: 'none', transition: 'all 0.2s' }}
+  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-accent)'; }}
+  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border)'; e.currentTarget.style.color = 'var(--color-fg3)'; }}
+>
+  <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+      1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68
+      0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+      0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01
+      2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+  </svg>
+</a>
           </div>
         </div>
 
