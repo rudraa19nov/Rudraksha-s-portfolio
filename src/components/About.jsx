@@ -83,7 +83,7 @@ export default function About() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 22 }}>
               {traits.map((t, i) => (
                 <div key={i} className="glass-card hover-lift" style={{ borderRadius: 12, padding: '14px 16px', cursor: 'default' }}>
-                  <div style={{ fontSize: 20, marginBottom: 8 }}>{t.icon}</div>
+                  {/* <div style={{ fontSize: 20, marginBottom: 8 }}>{t.icon}</div> */}
                   <h4 style={{ fontFamily: 'Syne,sans-serif', fontSize: 12, fontWeight: 700, color: 'var(--color-fg)', marginBottom: 4 }}>{t.title}</h4>
                   <p style={{ fontSize: 11, color: 'var(--color-fg3)', lineHeight: 1.5 }}>{t.desc}</p>
                 </div>
@@ -104,11 +104,17 @@ export default function About() {
                   fontSize: 13, color: 'var(--color-fg2)',
                   marginBottom: i < INFO.length - 1 ? 10 : 0,
                 }}>
-                  <span style={{
-                    width: 28, height: 28, background: 'rgba(184,204,110,0.1)',
-                    borderRadius: 7, display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: 13, flexShrink: 0,
-                  }}>{item.icon}</span>
+                 <span
+                    style={{
+                      color: "var(--color-accent)",
+                      fontSize: 18,
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      flexShrink: 0,
+                    }}
+                  >
+                    •
+                  </span>
                   {item.text}
                 </div>
               ))}

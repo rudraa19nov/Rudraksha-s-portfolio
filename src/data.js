@@ -18,7 +18,7 @@ export const personal = {
 };
 
 export const stats = [
-  { id: 's1', value: 500,  suffix: '+',  label: 'DSA Problems Solved' },
+  { id: 's1', value: 500,   suffix: '+',   label: 'DSA Problems Solved' },
   { id: 's2', value: 10,    suffix: '+',  label: 'Full Stack Projects' },
   { id: 's3', value: null, emoji: '🏆',  label: 'SIH 2025 Winner' },
   { id: 's4', value: 8.4,  suffix: '',   label: 'CGPA · B.Tech IT', isFloat: true },
@@ -67,16 +67,70 @@ export const techStack = [
 ];
 
 export const projects = [
-  // ── 1. KrishiSakhi (SIH Winner) ──────────────────────────────────
+
+
+// ── 1. ScoutBoard ─────────────────────────────────────────────
+{
+  id: "scoutboard",
+  title: "ScoutBoard",
+  url: "scout-board.vercel.app",
+  type: "MERN · Developer Analytics",
+  badge: "featured",
+  period: "Jun 2026",
+  preview: "scoutboard",
+
+  desc: "A full-stack MERN developer analytics platform that enables users to explore LeetCode profiles, track coding performance, and maintain a private scouting board. Features secure Google OAuth authentication, owner-specific profile management, interactive comparisons, CSV export, and real-time LeetCode analytics through GraphQL-powered data retrieval.",
+
+  tech: [
+    "React 19",
+    "Vite",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Google OAuth",
+    "JWT",
+    "React Router",
+    "LeetCode GraphQL API",
+    "REST APIs",
+    "CSS"
+  ],
+
+features: [
+  "Google OAuth",
+  "JWT Auth",
+  "Scout Boards",
+  "LeetCode Analytics",
+  "Profile Comparison",
+  "Real-time Sync",
+  "Tags & Notes",
+  "CSV Export",
+  "Sorting & Filters",
+  "Responsive UI"
+],
+
+  github: "https://github.com/rudraa19nov/ScoutBoard.git",
+  live: "https://scout-board.vercel.app/",
+
+  tags: [
+    "all",
+    "featured",
+    "mern",
+    "fullstack",
+    "analytics"
+  ]
+},
+
+
+  // ── 2. KrishiSakhi (SIH Winner) ──────────────────────────────────
   {
     id: 'krishi',
     title: 'KrishiSakhi',
     url: 'krishisakhi.vercel.app',
     type: 'National · AgriTech · AI',
     badge: 'national',
-    period: 'Jul 2025 – Aug 2025',
+    period: 'Nov 2025 – Dec 2025',
     preview: 'krishi',
-    previewEmoji: '🌾',
     desc: 'Award-winning AI-powered farming assistant delivering personalised crop recommendations, disease detection, and agricultural insights via Gemini AI. Multilingual voice & text support built with ElevenLabs and Twilio so rural farmers can interact in their native language.',
     tech: ['Express.js', 'MongoDB', 'Gemini AI', 'ElevenLabs', 'Twilio', 'Node.js'],
     features: ['AI Crop Recommendations', 'Disease Detection', 'Multilingual Voice & Text', 'Farmer Profiling', 'Pesticide Guidance', 'RESTful APIs'],
@@ -85,7 +139,7 @@ export const projects = [
     tags: ['all', 'national', 'fullstack', 'ai'],
   },
 
-  //-----studymate----//
+  //-----3 studymate----//
 
   {
     id: 'studymate',
@@ -95,7 +149,6 @@ export const projects = [
     badge: 'featured',
     period: 'Jun 2026 – Jul 2026',
     preview: 'studymate',
-    previewEmoji: '📚',
     desc: 'AI-powered study assistant that lets users upload PDFs and get source-grounded answers. Built a PDF ingestion pipeline with semantic embeddings for retrieval-augmented generation (RAG), backed by the Mistral LLM for context-aware Q&A, on a Next.js 16.2 (App Router, Turbopack) frontend.',
     tech: ['Next.js 16.2', 'React 19', 'Express.js', 'Transformers', 'Mistral AI', 'Tailwind CSS'],
     features: ['PDF Ingestion', 'Semantic Embeddings (RAG)', 'Mistral LLM Q&A', 'File Uploads', 'Turbopack App Router', 'Responsive UI'],
@@ -104,7 +157,7 @@ export const projects = [
     tags: ['all', 'ai', 'fullstack'],
   },
 
-  // ── 2. StayScape (formerly Wanderlust) ───────────────────────────
+  // ── 4. StayScape (formerly Wanderlust) ───────────────────────────
   {
     id: 'stayscape',
     title: 'StayScape',
@@ -113,7 +166,7 @@ export const projects = [
     badge: 'featured',
     period: 'Nov 2024 – Jan 2025',
     preview: 'wander',
-    previewEmoji: '🏡',
+    // previewEmoji: '🏡',
     desc: 'Full-stack property rental marketplace built on an MVC architecture. Features secure auth with Passport.js & bcrypt, role-based access control, Cloudinary image uploads with Multer, and scalable MongoDB schemas with referenced data models.',
     tech: ['Node.js', 'Express.js', 'MongoDB', 'EJS', 'Passport.js', 'Cloudinary', 'Multer', 'bcrypt'],
     features: ['Passport.js Auth', 'Role-Based Access', 'Cloudinary Uploads', 'MVC Architecture', 'Async Error Handling', 'CRUD APIs'],
@@ -122,41 +175,75 @@ export const projects = [
     tags: ['all', 'fullstack'],
   },
 
-  // ── 3. NexLearn (formerly AI Learner Hub) ────────────────────────
-  {
-    id: 'nexlearn',
-    title: 'NexLearn',
-    url: 'nexlearn.vercel.app',
-    type: 'AI + Full Stack',
-    badge: null,
-    period: 'Apr 2026 – May 2026',
-    preview: 'ai',
-    previewEmoji: '🤖',
-    desc: 'AI-powered education platform that generates personalised learning roadmaps and resource recommendations using Gemini AI. JWT-secured backend with MongoDB for progress tracking and optimised React frontend with Redux state management.',
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'Gemini AI', 'JWT', 'Redux'],
-    features: ['Personalised Roadmaps', 'Gemini AI Integration', 'JWT Auth', 'Redux State', 'Progress Tracking', 'Resource Curation'],
-    github: 'https://github.com/rudraa19nov/NexLearn',
-    live: 'https://nexlearn.vercel.app',
-    tags: ['all', 'ai', 'fullstack', 'mern'],
-  },
+  // ── 5 NexLearn (formerly AI Learner Hub) ────────────────────────
+{
+  id: 'nexlearn',
+  title: 'NexLearn',
+  url: 'nexlearn.vercel.app',
+  type: 'AI Learning Platform',
+  badge: "featured",
+  period: 'Apr 2026 – May 2026',
+  preview: 'ai',
+  desc: 'AI-powered learning platform that generates personalised roadmaps, recommends learning resources, and tracks user progress. Built with the MERN stack and integrated with Gemini AI for intelligent learning assistance.',
 
-  // ── 4. ConnectAlum (formerly Alumni Connect) ─────────────────────
-  {
-    id: 'connectalum',
-    title: 'ConnectAlum',
-    url: 'connectalum.vercel.app',
-    type: 'MERN · Networking',
-    badge: null,
-    period: 'Jul 2025 – Aug 2025',
-    preview: 'alumni',
-    previewEmoji: '🔗',
-    desc: 'Professional alumni–student networking platform built on the MERN stack. Enables mentorship discovery, career-opportunity posting, and community interaction through a clean profile-driven interface with JWT authentication.',
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'JWT'],
-    features: ['JWT Auth', 'Mentorship Matching', 'Opportunity Board', 'Profile Management', 'Community Feed', 'Responsive UI'],
-    github: 'https://github.com/rudraa19nov/Alumni_sih.git',
-    live: 'https://connectalum.vercel.app',
-    tags: ['all', 'fullstack', 'mern'],
-  },
+  tech: [
+    'React.js',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Tailwind CSS',
+    'Gemini AI',
+    'JWT',
+    'Redux'
+  ],
+
+  features: [
+    'AI Roadmaps',
+    'Gemini AI',
+    'JWT Auth',
+    'Progress Tracking',
+    'Learning Resources',
+    'Responsive UI'
+  ],
+
+  github: 'https://github.com/rudraa19nov/NexLearn',
+  live: 'https://nexlearn.vercel.app',
+  tags: ['all', 'ai', 'fullstack', 'mern'],
+},
+
+  // ── 6. ConnectAlum (formerly Alumni Connect) ─────────────────────
+ {
+  id: 'connectalum',
+  title: 'ConnectAlum',
+  url: 'connectalum.vercel.app',
+  type: 'Alumni Networking Platform',
+  badge:"featured",
+  period: 'Jul 2025 – Aug 2025',
+  preview: 'alumni',
+  desc: 'Full-stack alumni networking platform that connects students and graduates through mentorship, career opportunities, and community engagement using a secure MERN architecture.',
+
+  tech: [
+    'React.js',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Tailwind CSS',
+    'JWT'
+  ],
+
+  features: [
+    'JWT Auth',
+    'Mentorship',
+    'Opportunity Board',
+    'Profiles',
+    'Community Feed',
+    'Responsive UI'
+  ],
+
+  github: 'https://github.com/rudraa19nov/Alumni_sih.git',
+  live: 'https://connectalum.vercel.app',
+  tags: ['all', 'fullstack', 'mern'],
+},
 ];
 
 export const experience = [
@@ -167,6 +254,13 @@ export const experience = [
     desc: 'Built an AI-powered PDF study assistant on Next.js 16.2, with a semantic-embedding ingestion pipeline and Mistral LLM-backed retrieval-augmented Q&A over uploaded documents.',
     highlight: false,
   },
+  {
+  period: "Jun 2026",
+  title: "Full Stack Developer — ScoutBoard",
+  org: "Personal Project",
+  desc: "Developed a production-ready MERN developer analytics platform featuring Google OAuth authentication, LeetCode profile exploration, secure owner-specific dashboards, profile comparison, CSV export, and real-time analytics using GraphQL APIs.",
+  highlight: true,
+},
   
   {
     period: 'Apr 2026 – May 2026',

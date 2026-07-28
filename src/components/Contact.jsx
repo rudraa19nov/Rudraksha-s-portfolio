@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { personal } from '../data';
 
 const CONTACT_INFO = [
-  { icon: '✉️', label: 'Email',    value: personal.email },
-  { icon: '📱', label: 'Phone',    value: personal.phone },
-  { icon: '🔗', label: 'LinkedIn', value: 'linkedin.com/in/rudraksha', href: personal.linkedin },
-  { icon: '⚡', label: 'GitHub',   value: 'github.com/RudrakshaS',    href: personal.github },
+  { label: 'Email',    value: personal.email },
+  {  label: 'Phone',    value: personal.phone },
+  {  label: 'LinkedIn', value: 'linkedin.com/in/rudraksha', href: personal.linkedin },
+  {  label: 'GitHub',   value: 'github.com/RudrakshaS',    href: personal.github },
 ];
 
 export default function Contact() {
@@ -45,42 +45,71 @@ export default function Contact() {
             <p style={{ fontSize: 14, color: 'var(--color-fg2)', lineHeight: 1.7, marginBottom: 20, fontWeight: 300 }}>
               Actively seeking software development internships. Let's build something impactful together.
             </p>
-            {CONTACT_INFO.map((item, i) => (
-              <div key={i} className="glass-card" style={{ borderRadius: 12, padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, transition: 'all 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-card2)'; e.currentTarget.style.borderColor = 'var(--color-border2)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-card)'; e.currentTarget.style.borderColor = 'var(--color-border)'; }}
+
+          {CONTACT_INFO.map((item, i) => (
+            <div
+              key={i}
+              className="glass-card"
+              style={{
+                borderRadius: 12,
+                padding: "13px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                marginBottom: 10,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--color-card2)";
+                e.currentTarget.style.borderColor = "var(--color-border2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--color-card)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+              }}
+            >
+              <div
+                style={{
+                  minWidth: 80,
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--color-accent)",
+                }}
               >
-                <span style={{ width: 34, height: 34, background: 'rgba(184,204,110,0.1)', borderRadius: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15, flexShrink: 0 }}>{item.icon}</span>
-                <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-fg3)' }}>{item.label}</div>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontSize: 13,
-                        color: 'var(--color-accent)',
-                        fontWeight: 500,
-                        textDecoration: 'none',
-                      }}
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <div
-                      style={{
-                        fontSize: 13,
-                        color: 'var(--color-fg)',
-                        fontWeight: 500,
-                      }}
-                    >
-                      {item.value}
-                    </div>
-                  )}     
-               </div>
+                {item.label}
               </div>
-            ))}
+
+              <div style={{ flex: 1 }}>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: 14,
+                      color: "var(--color-fg)",
+                      fontWeight: 500,
+                      textDecoration: "none",
+                    }}
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <span
+                    style={{
+                      fontSize: 14,
+                      color: "var(--color-fg)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item.value}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
           </div>
 
           {/* Right - Form */}

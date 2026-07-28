@@ -3,7 +3,7 @@ import { projects } from '../data';
 
 const FILTERS = [
   { label: 'All',        key: 'all' },
-  { label: '🏆 National', key: 'national' },
+  { label: 'National', key: 'national' },
   { label: 'Full Stack',  key: 'fullstack' },
   { label: 'AI',          key: 'ai' },
   { label: 'MERN',        key: 'mern' },

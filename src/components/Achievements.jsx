@@ -1,21 +1,30 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { stats } from '../data';
 
-function countUp(el, target, isFloat) {
+
+
+function countUp(el, target, isFloat, suffix = "") {
   let cur = 0;
   const inc = target / 100;
+
   const t = setInterval(() => {
     cur = Math.min(cur + inc, target);
-    if (el) el.textContent = isFloat ? cur.toFixed(1) : Math.floor(cur) + (target === 250 ? '+' : target === 10 ? '+' : '');
+
+    if (el) {
+      el.textContent =
+        (isFloat ? cur.toFixed(1) : Math.floor(cur)) + suffix;
+    }
+
     if (cur >= target) clearInterval(t);
   }, 16);
 }
 
+
 const ACHIEVEMENTS = [
-  { icon: '🥇', text: 'SIH 2025 National Hackathon Winner — Krishi Sakhi AgriTech' },
-  { icon: '💻', text: 'Built 10+ production-grade full-stack MERN applications' },
-  { icon: '🧠', text: 'Strong CS fundamentals — DSA, OOP, DBMS, OS, CN' },
-  { icon: '📈', text: 'Consistent learner maintaining 8.5 CGPA at BIET Jhansi' },
+  { text: 'Winner, Smart India Hackathon (SIH) 2025 — Krishi Sakhi AgriTech Solution' },
+  { text: 'Developed 10+ production-grade full-stack applications using the MERN stack' },
+  { text: 'Strong foundation in core Computer Science concepts: DSA, OOP, DBMS, and Operating Systems' },
+  { text: 'Maintaining a CGPA of 8.4 at BIET Jhansi' },
 ];
 
 export default function Achievements() {
@@ -29,8 +38,8 @@ export default function Achievements() {
         setCounted(true);
         stats.forEach(s => {
           if (s.value !== null && statRefs.current[s.id]) {
-            countUp(statRefs.current[s.id], s.value, s.isFloat);
-          }
+        countUp( statRefs.current[s.id], s.value, s.isFloat, s.suffix || ""); 
+         }
         });
       }
     }, { threshold: 0.3 });
@@ -64,7 +73,18 @@ export default function Achievements() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 10 }}>
           {ACHIEVEMENTS.map((a, i) => (
             <div key={i} className="glass-card hover-lift" style={{ borderRadius: 12, padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ width: 32, height: 32, background: 'linear-gradient(135deg,rgba(184,204,110,0.15),rgba(232,164,74,0.1))', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>{a.icon}</span>
+              {/* <span style={{ width: 32, height: 32, background: 'linear-gradient(135deg,rgba(184,204,110,0.15),rgba(232,164,74,0.1))', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>{a.icon}</span> */}
+             <span
+                  style={{
+                    color: "var(--color-accent)",
+                    fontSize: 18,
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    flexShrink: 0,
+                  }}
+                >
+                  •
+                </span>
               <span style={{ fontSize: 13, color: 'var(--color-fg2)' }}>{a.text}</span>
             </div>
           ))}
